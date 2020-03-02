@@ -19,7 +19,7 @@ composer require --dev chinleung/laravel-factory-builder
 By default, the builder will fetch the models from `App\\` namespace if none has been provided in your builder.
 
 ```bash
-php artisan vendor:publish --provider="ChinLeung\FactoriesServiceProvider" --tag="config"
+php artisan vendor:publish --provider="ChinLeung\Factories\FactoriesServiceProvider" --tag="config"
 ```
 
 ## Methods
