@@ -1,0 +1,51 @@
+{
+    "name": "chinleung/laravel-factory-builder",
+    "description": "A package to use factories like an Eloquent builder.",
+    "keywords": [
+        "chinleung",
+        "laravel-factory-builder"
+    ],
+    "homepage": "https://github.com/chinleung/laravel-factory-builder",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Chin Leung",
+            "email": "hello@chinleung.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "illuminate/support": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ChinLeung\\Factories\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ChinLeung\\Factories\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ChinLeung\\Factories\\FactoriesServiceProvider"
+            ]
+        }
+    }
+}
