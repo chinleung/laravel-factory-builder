@@ -11,6 +11,6 @@ return [
     |
     */
 
-    'namespace' => env('FACTORIES_NAMESPACE', 'App\\'),
+    'namespace' => env('FACTORIES_NAMESPACE', 'App'),
 
 ];

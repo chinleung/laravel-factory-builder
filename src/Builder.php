@@ -28,7 +28,7 @@ abstract class Builder
     public function __construct()
     {
         if (is_null($this->model)) {
-            $this->model = config('factories.namespace').Str::replaceLast(
+            $this->model = config('factories.namespace').'\\'.Str::replaceLast(
                 'Factory',
                 '',
                 class_basename(get_called_class())
