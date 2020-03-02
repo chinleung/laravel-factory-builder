@@ -87,7 +87,7 @@ class BuilderTest extends TestCase
     protected function getPackageProviders($app)
     {
         return [
-            FactoriesServiceProvider::class
+            FactoriesServiceProvider::class,
         ];
     }
 }
