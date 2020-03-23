@@ -37,63 +37,6 @@ abstract class Builder
     }
 
     /**
-     * Create the model.
-     *
-     * @param  int  $count
-     * @return mixed
-     */
-    public function create(int $count = null)
-    {
-        return $this->build(true, $count);
-    }
-
-    /**
-     * Create the model without saving it in the database.
-     *
-     * @param  int  $count
-     * @return mixed
-     */
-    public function make(int $count = null)
-    {
-        return $this->build(false, $count);
-    }
-
-    /**
-     * Hook to alter the model after it has been created.
-     *
-     * @param  \Illuminate\Database\Eloquent\Model  $model
-     * @return \Illuminate\Database\Eloquent\Model
-     */
-    protected function created(Model $model): Model
-    {
-        return $model;
-    }
-
-    /**
-     * Set a property to pass to the factory.
-     *
-     * @param  string  $property
-     * @param  mixed  $value
-     * @return self
-     */
-    public function setProperty(string $property, $value)
-    {
-        Arr::set($this->properties, $property, $value);
-
-        return $this;
-    }
-
-    /**
-     * Retrieve the properties for the factory.
-     *
-     * @return array
-     */
-    public function getProperties(): array
-    {
-        return $this->properties;
-    }
-
-    /**
      * Build the models with the parameters.
      *
      * @param  bool  $persistent
@@ -111,5 +54,62 @@ abstract class Builder
         $models->each(fn ($model) => $this->created($model, $persistent));
 
         return is_null($count) ? $models->first() : $models;
+    }
+
+    /**
+     * Create the model.
+     *
+     * @param  int  $count
+     * @return mixed
+     */
+    public function create(int $count = null)
+    {
+        return $this->build(true, $count);
+    }
+
+    /**
+     * Hook to alter the model after it has been created.
+     *
+     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    protected function created(Model $model): Model
+    {
+        return $model;
+    }
+
+    /**
+     * Retrieve the properties for the factory.
+     *
+     * @return array
+     */
+    public function getProperties(): array
+    {
+        return $this->properties;
+    }
+
+    /**
+     * Create the model without saving it in the database.
+     *
+     * @param  int  $count
+     * @return mixed
+     */
+    public function make(int $count = null)
+    {
+        return $this->build(false, $count);
+    }
+
+    /**
+     * Set a property to pass to the factory.
+     *
+     * @param  string  $property
+     * @param  mixed  $value
+     * @return self
+     */
+    public function setProperty(string $property, $value)
+    {
+        Arr::set($this->properties, $property, $value);
+
+        return $this;
     }
 }
