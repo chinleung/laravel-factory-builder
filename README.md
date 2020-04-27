@@ -22,6 +22,24 @@ By default, the builder will fetch the models from `App\\` namespace if none has
 php artisan vendor:publish --provider="ChinLeung\Factories\FactoriesServiceProvider" --tag="config"
 ```
 
+## Quick Usage
+
+### Basic
+
+```php
+use Tests\Factories\UserFactory;
+
+$user = app(UserFactory::class)->create();
+```
+
+### Real-Time Facade
+
+```php
+use Facades\Tests\Factories\UserFactory;
+
+$user = UserFactory::create();
+```
+
 ## Methods
 
 The builder comes with a few methods available for you to use.
