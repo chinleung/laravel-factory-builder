@@ -5,6 +5,7 @@ namespace ChinLeung\Tests;
 use ChinLeung\Factories\FactoriesServiceProvider;
 use ChinLeung\Factories\Tests\Factories\UserFactory;
 use ChinLeung\Factories\Tests\Models\User;
+use Facades\ChinLeung\Factories\Tests\Factories\UserFactory as UserFactoryFacade;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\TestCase;
 
@@ -40,6 +41,25 @@ class BuilderTest extends TestCase
         $this->assertInstanceOf(
             User::class,
             $user = app(UserFactory::class)->create()
+        );
+
+        $this->assertDatabaseHas('users', [
+            'id' => $user->id,
+        ]);
+    }
+
+    /**
+     * A new user can be created via the real-time facade.
+     *
+     * @test
+     * @depends a_new_user_can_be_created
+     * @return void
+     */
+    public function a_new_user_can_be_created_via_the_real_time_facade(): void
+    {
+        $this->assertInstanceOf(
+            User::class,
+            $user = UserFactoryFacade::create()
         );
 
         $this->assertDatabaseHas('users', [
