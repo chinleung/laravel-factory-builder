@@ -83,7 +83,7 @@ abstract class Builder
      *
      * @return self
      */
-    public function fresh(): Builder
+    public function fresh(): self
     {
         $this->properties = [];
 
@@ -118,7 +118,7 @@ abstract class Builder
      * @param  mixed  $value
      * @return self
      */
-    public function setProperty(string $property, $value): Builder
+    public function setProperty(string $property, $value): self
     {
         Arr::set($this->properties, $property, $value);
 
