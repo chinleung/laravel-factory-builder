@@ -79,6 +79,18 @@ abstract class Builder
     }
 
     /**
+     * Clear out the existing properties.
+     *
+     * @return self
+     */
+    public function fresh(): Builder
+    {
+        $this->properties = [];
+
+        return $this;
+    }
+
+    /**
      * Retrieve the properties for the factory.
      *
      * @return array
@@ -106,7 +118,7 @@ abstract class Builder
      * @param  mixed  $value
      * @return self
      */
-    public function setProperty(string $property, $value)
+    public function setProperty(string $property, $value): Builder
     {
         Arr::set($this->properties, $property, $value);
 
